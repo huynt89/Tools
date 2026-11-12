@@ -2,45 +2,121 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNews - Cập nhật công nghệ mới nhất</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <meta name="description" content="Bộ công cụ trực tuyến tiện ích: tính điểm, xếp loại học sinh và ước tính tiền lương cá nhân.">
+    <title>Tiện Ích Mỗi Ngày — Công cụ nhỏ, việc lớn</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">Tech<span>Blog</span></div>
-            <nav>
-                <ul id="nav-filters">
-                    <li class="active" data-filter="all">Tất cả</li>
-                    <li data-filter="PC">PC</li>
-                    <li data-filter="MAC">Mac</li>
-                    <li data-filter="Mobile">Mobile</li>
-                    <li data-filter="Other">Khác</li>
-                </ul>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Tiện Ích Mỗi Ngày - Trang chủ">
+                <span class="brand-mark" aria-hidden="true">✳</span>
+                <span>tiện ích<span class="brand-accent">.</span></span>
+            </a>
+            <nav class="main-nav" aria-label="Điều hướng chính">
+                <a class="nav-link active" href="#cong-cu">Khám phá công cụ</a>
+                <a class="nav-link" href="#gioi-thieu">Giới thiệu</a>
             </nav>
+            <a class="header-cta" href="#cong-cu">Dùng thử ngay <span aria-hidden="true">↗</span></a>
         </div>
     </header>
 
-    <main class="container">
-        <section id="featured-post" class="hero-section">
-            </section>
+    <main>
+        <section class="hero container">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> Bộ công cụ trực tuyến miễn phí</p>
+                <h1>Việc thường ngày,<br><span>nhẹ nhàng hơn.</span></h1>
+                <p class="hero-description">Những công cụ nhỏ gọn giúp bạn tính nhanh, làm gọn — dùng ngay trên điện thoại hay máy tính, không cần cài đặt.</p>
+                <a class="button button-dark" href="#cong-cu">Khám phá công cụ <span aria-hidden="true">↓</span></a>
+                <div class="hero-note"><span class="note-check" aria-hidden="true">✓</span> Miễn phí <span class="note-divider">·</span> Nhanh gọn <span class="note-divider">·</span> Dùng trên mọi thiết bị</div>
+            </div>
+            <div class="hero-art" aria-label="Minh họa các công cụ tiện ích" role="img">
+                <div class="art-orbit orbit-one"></div>
+                <div class="art-orbit orbit-two"></div>
+                <div class="art-card art-card-main">
+                    <span class="art-icon art-icon-lime">✓</span>
+                    <span class="art-label">Tính nhanh</span>
+                    <strong>Nhẹ đầu hơn<br>mỗi ngày.</strong>
+                    <span class="art-spark" aria-hidden="true">✳</span>
+                </div>
+                <div class="art-card art-card-float art-card-score">
+                    <span class="mini-icon">✎</span><span>Điểm số</span><strong>8.5</strong>
+                </div>
+                <div class="art-card art-card-float art-card-pay">
+                    <span class="mini-icon">↗</span><span>Lương tháng</span><strong>+ OT</strong>
+                </div>
+                <span class="art-star star-one" aria-hidden="true">✳</span>
+                <span class="art-star star-two" aria-hidden="true">✦</span>
+            </div>
+        </section>
 
-        <div class="section-title">
-            <h2>Bài viết mới nhất</h2>
-        </div>
+        <section class="tools-section" id="cong-cu">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Chọn công cụ của bạn</p>
+                        <h2>Có ích ngay, dùng liền tay.</h2>
+                    </div>
+                    <p class="section-side-note">Thêm tiện lợi vào những việc<br class="desktop-break"> bạn vẫn làm mỗi ngày.</p>
+                </div>
+                <div class="tool-grid">
+                    <a class="tool-card tool-card-blue" href="tinh-diem.html">
+                        <div class="tool-card-top"><span class="tool-number">01 / HỌC TẬP</span><span class="tool-arrow" aria-hidden="true">↗</span></div>
+                        <div class="tool-illustration score-illustration" aria-hidden="true">
+                            <span class="illus-paper"><i></i><i></i><i></i><b>8.5</b></span>
+                            <span class="illus-pencil">✎</span>
+                            <span class="illus-check">✓</span>
+                        </div>
+                        <h3>Tính điểm &amp; xếp loại</h3>
+                        <p>Nhập điểm từng môn, tính điểm trung bình và tham khảo xếp loại theo Thông tư 22.</p>
+                        <span class="card-action">Mở công cụ <span aria-hidden="true">→</span></span>
+                    </a>
+                    <a class="tool-card tool-card-peach" href="tinh-luong.html">
+                        <div class="tool-card-top"><span class="tool-number">02 / CÔNG VIỆC</span><span class="tool-arrow" aria-hidden="true">↗</span></div>
+                        <div class="tool-illustration salary-illustration" aria-hidden="true">
+                            <span class="illus-coin">₫</span><span class="illus-chart"><i></i><i></i><i></i><i></i></span>
+                            <span class="illus-plus">+</span>
+                        </div>
+                        <h3>Tính lương cá nhân</h3>
+                        <p>Ước tính lương theo ngày công, phụ cấp và tiền làm thêm giờ của bạn.</p>
+                        <span class="card-action">Mở công cụ <span aria-hidden="true">→</span></span>
+                    </a>
+                    <article class="tool-card tool-card-lilac tool-card-soon" aria-label="Công cụ thứ ba đang được phát triển">
+                        <div class="tool-card-top"><span class="tool-number">03 / SẮP RA MẮT</span><span class="soon-pill">Đang làm</span></div>
+                        <div class="tool-illustration soon-illustration" aria-hidden="true"><span>✦</span><i>?</i></div>
+                        <h3>Công cụ tiếp theo</h3>
+                        <p>Một tiện ích mới đang được chuẩn bị để giúp bạn tiết kiệm thêm thời gian.</p>
+                        <span class="card-action card-action-muted">Sắp ra mắt <span aria-hidden="true">…</span></span>
+                    </article>
+                    <article class="tool-card tool-card-mint tool-card-soon" aria-label="Công cụ thứ tư đang được phát triển">
+                        <div class="tool-card-top"><span class="tool-number">04 / SẮP RA MẮT</span><span class="soon-pill">Đang làm</span></div>
+                        <div class="tool-illustration soon-illustration soon-illustration-mint" aria-hidden="true"><span>✳</span><i>+</i></div>
+                        <h3>Thêm điều hữu ích</h3>
+                        <p>Kho công cụ sẽ tiếp tục được mở rộng — đơn giản, dễ dùng và miễn phí.</p>
+                        <span class="card-action card-action-muted">Sắp ra mắt <span aria-hidden="true">…</span></span>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-        <div id="blog-grid" class="blog-grid">
-            <div class="loading">Đang tải dữ liệu...</div>
-        </div>
+        <section class="about-section container" id="gioi-thieu">
+            <div class="about-mark" aria-hidden="true">✳</div>
+            <div>
+                <p class="eyebrow">Ít thao tác hơn. Nhiều thời gian hơn.</p>
+                <h2>Công cụ dễ hiểu,<br>kết quả rõ ràng.</h2>
+            </div>
+            <p class="about-copy">Mỗi tiện ích được thiết kế để bạn mở lên là dùng được ngay. Kết quả được tính trực tiếp trên thiết bị của bạn; không cần tài khoản hay cài thêm ứng dụng.</p>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 TechBlog by HuyNT89. All rights reserved.</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">✳</span><span>tiện ích<span class="brand-accent">.</span></span></a>
+            <p>Được làm để những việc nhỏ trở nên dễ dàng hơn.</p>
+            <span>© 2026 Tiện Ích Mỗi Ngày</span>
+        </div>
     </footer>
-
-    <script src="js/blog_data.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>

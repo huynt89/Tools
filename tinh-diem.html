@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <meta name="description" content="Tính điểm trung bình môn và tham khảo xếp loại kết quả học tập theo Thông tư 22/2021/TT-BGDĐT.">
+    <title>Tính điểm &amp; xếp loại — Tiện Ích Mỗi Ngày</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="tool-page">
+    <header class="site-header tool-page-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Tiện Ích Mỗi Ngày - Trang chủ"><span class="brand-mark" aria-hidden="true">✳</span><span>tiện ích<span class="brand-accent">.</span></span></a>
+            <a class="header-cta" href="index.html">← Tất cả công cụ</a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Điều hướng">
+                <a href="index.html">Trang chủ</a><span aria-hidden="true">/</span><span>Tính điểm học tập</span>
+            </nav>
+            <section class="calculator-intro">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> Công cụ học tập</p>
+                <h1>Tính điểm &amp; xếp loại</h1>
+                <p>Nhập điểm đánh giá thường xuyên, giữa kỳ và cuối kỳ để tính điểm trung bình từng môn. Kết quả xếp loại chỉ mang tính tham khảo theo tiêu chí tại Thông tư 22/2021/TT-BGDĐT.</p>
+            </section>
+            <div class="calculator-layout">
+                <div class="calculator-main">
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <div><h2>Chọn kỳ tính điểm</h2><p>Chọn năm học để tính cả năm dựa trên điểm trung bình học kỳ I và II.</p></div>
+                            <span class="section-index">01</span>
+                        </div>
+                        <div class="form-field period-control">
+                            <label class="field-label" for="period-select">Phạm vi tính</label>
+                            <select class="select" id="period-select">
+                                <option value="semester">Một học kỳ</option>
+                                <option value="annual">Cả năm học</option>
+                            </select>
+                            <span class="field-hint">Chọn một học kỳ để nhập điểm kỳ đó; chọn cả năm để nhập điểm học kỳ II và ĐTB học kỳ I.</span>
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <div><h2>Điểm các môn học</h2><p>Điểm số nhập theo thang 10. Có thể thêm hoặc xóa môn học.</p></div>
+                            <span class="section-index">02</span>
+                        </div>
+                        <div class="subject-list" id="subject-list" aria-live="polite"></div>
+                        <div class="button-row">
+                            <button class="button-secondary" id="add-subject" type="button"><span aria-hidden="true">＋</span> Thêm môn học</button>
+                            <button class="button-primary" id="calculate-scores" type="button">Tính kết quả <span class="button-arrow" aria-hidden="true">→</span></button>
+                        </div>
+                        <p class="form-error" id="score-error" role="alert"></p>
+                    </section>
+                    <section class="panel result-panel" id="score-results" aria-live="polite">
+                        <div class="panel-heading">
+                            <div><h2>Kết quả của bạn</h2><p id="score-result-caption">Điểm trung bình và xếp loại tham khảo.</p></div>
+                            <span class="section-index">KẾT QUẢ</span>
+                        </div>
+                        <div class="result-summary">
+                            <div><span class="result-summary-label">Xếp loại học tập</span><strong id="score-classification">—</strong></div>
+                            <div class="result-badge"><span id="score-subject-count">0 môn</span><small>được tính điểm</small></div>
+                        </div>
+                        <div class="result-table-wrap">
+                            <table class="result-table">
+                                <thead><tr><th>Môn học</th><th>ĐTB kỳ</th><th>ĐTB cả năm</th><th>Đánh giá</th></tr></thead>
+                                <tbody id="score-result-rows"></tbody>
+                            </table>
+                        </div>
+                        <p class="result-note" id="score-result-note"></p>
+                    </section>
+                </div>
+                <aside class="panel formula-panel">
+                    <h2>Công thức tính</h2>
+                    <p>Cách tính điểm trung bình môn theo quy định tại Thông tư 22/2021/TT-BGDĐT.</p>
+                    <div class="formula-block">
+                        <strong>Điểm trung bình học kỳ</strong>
+                        <span class="formula-code">(Tổng ĐĐGtx + 2 × ĐĐGgk + 3 × ĐĐGck) ÷ (số ĐĐGtx + 5)</span>
+                    </div>
+                    <div class="formula-block">
+                        <strong>Điểm trung bình cả năm</strong>
+                        <span class="formula-code">(ĐTB học kỳ I + 2 × ĐTB học kỳ II) ÷ 3</span>
+                    </div>
+                    <ul class="formula-list">
+                        <li>ĐĐGtx: các điểm đánh giá thường xuyên; có thể có nhiều điểm.</li>
+                        <li>ĐĐGgk: điểm giữa kỳ; ĐĐGck: điểm cuối kỳ.</li>
+                        <li>Điểm trung bình được làm tròn đến một chữ số thập phân.</li>
+                    </ul>
+                    <details class="criteria-details">
+                        <summary>Tiêu chí xếp loại kết quả học tập</summary>
+                        <ul>
+                            <li><strong>Tốt:</strong> tất cả môn nhận xét đạt; tất cả môn tính điểm từ 6,5; ít nhất 6 môn từ 8,0, trong đó có Toán, Ngữ văn hoặc Ngoại ngữ.</li>
+                            <li><strong>Khá:</strong> tất cả môn nhận xét đạt; tất cả môn tính điểm từ 5,0; ít nhất 6 môn từ 6,5.</li>
+                            <li><strong>Đạt:</strong> tối đa 1 môn nhận xét chưa đạt; ít nhất 6 môn tính điểm từ 5,0 và không môn nào dưới 3,5.</li>
+                            <li><strong>Chưa đạt:</strong> không đáp ứng các tiêu chí trên.</li>
+                        </ul>
+                    </details>
+                    <div class="info-callout">Công cụ hỗ trợ tham khảo, không thay thế kết quả chính thức của nhà trường. Việc đánh giá còn phụ thuộc loại môn học, điều kiện đánh giá và hồ sơ học tập theo quy định.</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer tool-page-footer">
+        <div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">✳</span><span>tiện ích<span class="brand-accent">.</span></span></a><p>Tính toán rõ ràng, dễ kiểm tra.</p><span>© 2026 Tiện Ích Mỗi Ngày</span></div>
+    </footer>
+    <script src="js/score-tool.js"></script>
+</body>
+</html>

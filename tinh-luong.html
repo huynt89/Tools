@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <meta name="description" content="Ước tính lương tháng theo ngày công, phụ cấp và tiền làm thêm giờ.">
+    <title>Tính lương cá nhân — Tiện Ích Mỗi Ngày</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="tool-page">
+    <header class="site-header tool-page-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Tiện Ích Mỗi Ngày - Trang chủ"><span class="brand-mark" aria-hidden="true">✳</span><span>tiện ích<span class="brand-accent">.</span></span></a>
+            <a class="header-cta" href="index.html">← Tất cả công cụ</a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Điều hướng">
+                <a href="index.html">Trang chủ</a><span aria-hidden="true">/</span><span>Tính lương cá nhân</span>
+            </nav>
+            <section class="calculator-intro">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> Công cụ công việc</p>
+                <h1>Tính lương cá nhân</h1>
+                <p>Ước tính lương theo mức lương tháng, ngày công thực tế, phụ cấp và số giờ làm thêm. Các hệ số làm thêm có thể chỉnh sửa theo quy định áp dụng tại nơi làm việc.</p>
+            </section>
+            <div class="calculator-layout">
+                <div class="calculator-main">
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <div><h2>Lương &amp; ngày công</h2><p>Điền mức lương làm căn cứ tính giờ làm thêm và số ngày công.</p></div>
+                            <span class="section-index">01</span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label class="field-label" for="base-salary">Lương tháng làm căn cứ (đồng)</label>
+                                <input class="input" id="base-salary" type="number" min="0" step="100000" inputmode="decimal" placeholder="Ví dụ: 12000000" value="12000000">
+                                <span class="field-hint">Dùng để tính lương theo ngày công và đơn giá giờ làm thêm.</span>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="allowance">Phụ cấp tháng (đồng)</label>
+                                <input class="input" id="allowance" type="number" min="0" step="100000" inputmode="decimal" placeholder="Ví dụ: 1000000" value="0">
+                                <span class="field-hint">Công cụ tạm tính phụ cấp theo tỷ lệ ngày công.</span>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="workdays">Ngày công chuẩn trong tháng</label>
+                                <input class="input" id="workdays" type="number" min="1" max="31" step="0.5" inputmode="decimal" value="26">
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="worked-days">Ngày công thực tế được trả</label>
+                                <input class="input" id="worked-days" type="number" min="0" max="31" step="0.5" inputmode="decimal" value="26">
+                                <span class="field-hint">Không bao gồm giờ làm thêm; có thể nhập ngày công lẻ.</span>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="hours-per-day">Giờ làm việc tiêu chuẩn / ngày</label>
+                                <input class="input" id="hours-per-day" type="number" min="1" max="24" step="0.5" inputmode="decimal" value="8">
+                            </div>
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <div><h2>Thời gian làm thêm</h2><p>Nhập tổng số giờ OT trong tháng theo từng loại ngày.</p></div>
+                            <span class="section-index">02</span>
+                        </div>
+                        <div class="form-grid form-grid-three">
+                            <div class="form-field">
+                                <label class="field-label" for="ot-weekday">Ngày làm việc thường</label>
+                                <input class="input" id="ot-weekday" type="number" min="0" step="0.5" inputmode="decimal" value="0">
+                                <span class="field-hint">Mức tham khảo: 150%</span>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="ot-restday">Ngày nghỉ hằng tuần</label>
+                                <input class="input" id="ot-restday" type="number" min="0" step="0.5" inputmode="decimal" value="0">
+                                <span class="field-hint">Mức tham khảo: 200%</span>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="ot-holiday">Ngày lễ, Tết</label>
+                                <input class="input" id="ot-holiday" type="number" min="0" step="0.5" inputmode="decimal" value="0">
+                                <span class="field-hint">Mức tham khảo: 300%</span>
+                            </div>
+                        </div>
+                        <div class="form-grid form-grid-three form-grid-spaced">
+                            <div class="form-field">
+                                <label class="field-label" for="rate-weekday">Hệ số ngày thường</label>
+                                <input class="input" id="rate-weekday" type="number" min="0" step="0.1" value="1.5">
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="rate-restday">Hệ số ngày nghỉ</label>
+                                <input class="input" id="rate-restday" type="number" min="0" step="0.1" value="2">
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label" for="rate-holiday">Hệ số ngày lễ</label>
+                                <input class="input" id="rate-holiday" type="number" min="0" step="0.1" value="3">
+                            </div>
+                        </div>
+                        <div class="button-row">
+                            <button class="button-primary" id="calculate-salary" type="button">Tính lương ước tính <span class="button-arrow" aria-hidden="true">→</span></button>
+                        </div>
+                        <p class="form-error" id="salary-error" role="alert"></p>
+                    </section>
+                    <section class="panel result-panel" id="salary-results" aria-live="polite">
+                        <div class="panel-heading">
+                            <div><h2>Lương ước tính</h2><p>Chi tiết các khoản thu nhập trước khấu trừ.</p></div>
+                            <span class="section-index">KẾT QUẢ</span>
+                        </div>
+                        <div class="salary-card-highlight"><span>Tổng thu nhập ước tính (trước khấu trừ)</span><strong id="salary-total">0 ₫</strong></div>
+                        <div class="salary-results">
+                            <div class="salary-result-row"><span>Lương theo ngày công</span><strong id="salary-prorated">0 ₫</strong></div>
+                            <div class="salary-result-row"><span>Phụ cấp theo ngày công</span><strong id="salary-allowance">0 ₫</strong></div>
+                            <div class="salary-result-row"><span>Làm thêm ngày thường</span><strong id="salary-weekday-ot">0 ₫</strong></div>
+                            <div class="salary-result-row"><span>Làm thêm ngày nghỉ</span><strong id="salary-restday-ot">0 ₫</strong></div>
+                            <div class="salary-result-row"><span>Làm thêm ngày lễ, Tết</span><strong id="salary-holiday-ot">0 ₫</strong></div>
+                            <div class="salary-result-row"><span>Đơn giá giờ làm thêm cơ bản</span><strong id="salary-hourly">0 ₫ / giờ</strong></div>
+                            <div class="salary-result-row total"><span>Tổng cộng</span><strong id="salary-total-copy">0 ₫</strong></div>
+                        </div>
+                        <p class="output-disclaimer">Đây là ước tính trước thuế, bảo hiểm và các khoản khấu trừ khác. Lương, phụ cấp làm căn cứ đóng và cách tính thực tế phụ thuộc hợp đồng lao động, quy chế trả lương và quy định hiện hành.</p>
+                    </section>
+                </div>
+                <aside class="panel formula-panel">
+                    <h2>Cách tính</h2>
+                    <p>Các khoản được tách riêng để bạn dễ kiểm tra và điều chỉnh thông số.</p>
+                    <div class="formula-block">
+                        <strong>Lương theo ngày công</strong>
+                        <span class="formula-code">Lương tháng × ngày công thực tế ÷ ngày công chuẩn</span>
+                    </div>
+                    <div class="formula-block">
+                        <strong>Đơn giá giờ làm thêm</strong>
+                        <span class="formula-code">Lương tháng làm căn cứ ÷ ngày công chuẩn ÷ giờ/ngày</span>
+                    </div>
+                    <div class="formula-block">
+                        <strong>Tiền làm thêm</strong>
+                        <span class="formula-code">Đơn giá giờ × số giờ OT × hệ số</span>
+                    </div>
+                    <ul class="formula-list">
+                        <li>Hệ số mặc định: ngày thường 1,5; ngày nghỉ tuần 2,0; ngày lễ 3,0.</li>
+                        <li>Phụ cấp được tạm tính theo tỷ lệ ngày công giống lương tháng.</li>
+                        <li>Bạn có thể sửa hệ số để phù hợp quy chế hoặc cách tính riêng.</li>
+                    </ul>
+                    <div class="info-callout">Ước tính này không bao gồm OT ban đêm, tiền lương ngày lễ đã hưởng theo lương tháng, thuế TNCN, bảo hiểm hoặc các khoản thưởng/khấu trừ. Hãy đối chiếu bảng lương và quy định áp dụng thực tế.</div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer tool-page-footer">
+        <div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">✳</span><span>tiện ích<span class="brand-accent">.</span></span></a><p>Tính toán rõ ràng, dễ kiểm tra.</p><span>© 2026 Tiện Ích Mỗi Ngày</span></div>
+    </footer>
+    <script src="js/salary-tool.js"></script>
+</body>
+</html>
