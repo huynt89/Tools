@@ -13,18 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="subject-index">${index + 1}</span>
                 <div class="subject-name-wrap">
                     <label class="field-label">Tên môn học</label>
-                    <input class="input subject-name" type="text" maxlength="60" placeholder="Ví dụ: Toán" aria-label="Tên môn học ${index + 1}">
+                    <input class="input subject-name" type="text" maxlength="60" placeholder="Môn học, ví dụ: Toán" aria-label="Tên môn học ${index + 1}">
                 </div>
                 <button class="remove-subject" type="button" aria-label="Xóa môn học ${index + 1}" title="Xóa môn học">×</button>
             </div>
             <div class="subject-fields score-fields">
                 <div class="form-field">
-                    <label class="field-label">Điểm thường xuyên</label>
+                    <label class="field-label" title="Điểm đánh giá thường xuyên">Điểm TX</label>
                     <input class="input regular-scores" type="text" inputmode="decimal" placeholder="7, 8.5" aria-label="Điểm thường xuyên môn ${index + 1}">
                     <span class="field-hint">Ngăn cách bằng dấu phẩy; dùng dấu chấm cho phần thập phân.</span>
                 </div>
                 <div class="form-field annual-field">
-                    <label class="field-label">ĐTB học kỳ I</label>
+                    <label class="field-label">ĐTB HKI</label>
                     <input class="input first-semester-score" type="number" min="0" max="10" step="0.1" inputmode="decimal" placeholder="0 - 10" aria-label="Điểm trung bình học kỳ I môn ${index + 1}">
                 </div>
                 <div class="form-field">
