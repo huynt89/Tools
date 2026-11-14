@@ -28,21 +28,20 @@
                 <p>Nhập ngày công, khoản lương và thời gian làm thêm để ước tính thu nhập.</p>
             </section>
 
-            <div class="salary-period panel">
-                <div>
-                    <label class="field-label" for="salary-month">Tháng tính lương</label>
-                    <input class="input" id="salary-month" type="month">
-                </div>
-                <p>Công làm việc = công thực tế + OT quy đổi.</p>
-                <p class="form-error salary-error" id="salary-error" role="alert"></p>
-                <button class="button-primary salary-update-button" id="calculate-salary" type="button">Cập nhật bảng lương <span class="button-arrow" aria-hidden="true">→</span></button>
-            </div>
-
             <div class="salary-work-grid">
                 <section class="panel salary-column attendance-column">
                     <div class="panel-heading">
-                        <div><h2>Thông tin chấm công</h2><p>Nhập công chuẩn, công thực tế và công ăn trưa của tháng.</p></div>
+                        <div><h2>Chấm công</h2><p>Ngày công trong tháng</p></div>
                         <span class="section-index">01</span>
+                    </div>
+                    <div class="attendance-tools">
+                        <div class="attendance-month">
+                            <label class="field-label" for="salary-month">Tháng tính lương</label>
+                            <input class="input" id="salary-month" type="month">
+                        </div>
+                        <p>Công làm việc = công thực tế + OT quy đổi.</p>
+                        <button class="button-primary salary-update-button" id="calculate-salary" type="button">Cập nhật bảng lương <span class="button-arrow" aria-hidden="true">→</span></button>
+                        <p class="form-error salary-error" id="salary-error" role="alert"></p>
                     </div>
                     <div class="attendance-grid">
                         <div class="form-field">
@@ -73,53 +72,53 @@
                     <div class="salary-ledger">
                         <div class="salary-ledger-group">
                             <h3>Thu nhập</h3>
-                        <div class="salary-ledger-row">
-                            <label for="base-salary">Mức lương (LCB)</label>
-                            <div class="money-input"><input class="input" id="base-salary" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="hqcv">Phụ cấp HQCV</label>
-                            <div class="money-input"><input class="input" id="hqcv" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="relocation">Trợ cấp chuyển vùng</label>
-                            <div class="money-input"><input class="input" id="relocation" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="hazard-rate">Trợ cấp độc hại <span>(đ/ngày)</span></label>
-                            <div class="money-input"><input class="input" id="hazard-rate" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="meal-rate">Trợ cấp ăn ca <span>(đ/ngày)</span></label>
-                            <div class="money-input"><input class="input" id="meal-rate" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
+                            <div class="salary-ledger-row">
+                                <label for="base-salary">Mức lương (LCB)</label>
+                                <div class="money-input"><input class="input" id="base-salary" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="hqcv">Phụ cấp HQCV</label>
+                                <div class="money-input"><input class="input" id="hqcv" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="relocation">Trợ cấp chuyển vùng</label>
+                                <div class="money-input"><input class="input" id="relocation" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="hazard-rate">Trợ cấp độc hại <span>(đ/ngày)</span></label>
+                                <div class="money-input"><input class="input" id="hazard-rate" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="meal-rate">Trợ cấp ăn ca <span>(đ/ngày)</span></label>
+                                <div class="money-input"><input class="input" id="meal-rate" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
                         </div>
                         <div class="salary-ledger-group">
                             <h3>Khấu trừ &amp; hoàn thuế</h3>
-                        <div class="salary-ledger-row salary-ledger-output">
-                            <span>BHXH + BHYT <span>(LCB × 9,5%)</span></span>
-                            <output id="social-insurance">—</output>
-                        </div>
-                        <div class="salary-ledger-row salary-ledger-output">
-                            <span>BHTN <span>(LCB × 1%)</span></span>
-                            <output id="unemployment-insurance">—</output>
-                        </div>
-                        <div class="salary-ledger-row salary-ledger-output">
-                            <span>Đoàn phí <span>(LCB × 1%)</span></span>
-                            <output id="union-fee">—</output>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="phone-fee">Phí điện thoại</label>
-                            <div class="money-input"><input class="input" id="phone-fee" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="donation">Ủng hộ</label>
-                            <div class="money-input"><input class="input" id="donation" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
-                        <div class="salary-ledger-row">
-                            <label for="tax-refund">Hoàn thuế</label>
-                            <div class="money-input"><input class="input" id="tax-refund" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
-                        </div>
+                            <div class="salary-ledger-row salary-ledger-output">
+                                <span>BHXH + BHYT <span>(LCB × 9,5%)</span></span>
+                                <output id="social-insurance">—</output>
+                            </div>
+                            <div class="salary-ledger-row salary-ledger-output">
+                                <span>BHTN <span>(LCB × 1%)</span></span>
+                                <output id="unemployment-insurance">—</output>
+                            </div>
+                            <div class="salary-ledger-row salary-ledger-output">
+                                <span>Đoàn phí <span>(LCB × 1%)</span></span>
+                                <output id="union-fee">—</output>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="phone-fee">Phí điện thoại</label>
+                                <div class="money-input"><input class="input" id="phone-fee" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="donation">Ủng hộ</label>
+                                <div class="money-input"><input class="input" id="donation" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
+                            <div class="salary-ledger-row">
+                                <label for="tax-refund">Hoàn thuế</label>
+                                <div class="money-input"><input class="input" id="tax-refund" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                            </div>
                         </div>
                     </div>
                 </section>
