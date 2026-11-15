@@ -448,14 +448,14 @@ body { background: var(--paper); color: #edf3fc; font-size: 16px; }
 .record-list { display: grid; gap: 9px; }
 .calendar-list-group + .calendar-list-group { margin-top: 20px; padding-top: 16px; border-top: 1px solid #30425b; }
 .calendar-list-group h3 { margin: 0 0 9px; color: #e4edf9; font-size: 13px; }
-.calendar-record { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 32px; align-items: end; gap: 7px; padding: 10px; border: 1px solid #2d405b; border-radius: 10px; background: #17273d; }
+.calendar-record { display: grid; grid-template-columns: minmax(0, 1fr) 32px; align-items: end; gap: 7px; padding: 10px; border: 1px solid #2d405b; border-radius: 10px; background: #17273d; }
 .calendar-record label, .overtime-record label { min-width: 0; }
 .holiday-record label > span, .overtime-record label > span { display: block; margin-bottom: 5px; color: #b8c8dd; font-size: 11px; }
 .calendar-record .input { min-height: 37px; padding: 7px; font-size: 12px; }
 .remove-record { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid #4b3b4d; border-radius: 8px; background: #2c2638; color: #e7b6c0; cursor: pointer; font-size: 19px; }
 .remove-record:hover { border-color: #d17d8d; background: #442b3b; }
 .add-record-button { width: 100%; margin-top: 11px; font-size: 13px; }
-.overtime-head, .overtime-record { display: grid; grid-template-columns: 1.2fr .76fr .76fr .95fr .8fr .78fr 30px; align-items: center; gap: 6px; }
+.overtime-head, .overtime-record { display: grid; grid-template-columns: 1.2fr .76fr .76fr .95fr .8fr 30px; align-items: center; gap: 6px; }
 .overtime-head { padding: 0 5px 7px; color: #b8c8dd; font-size: 10px; font-weight: 700; text-align: center; }
 .overtime-record { padding: 9px 6px; border: 1px solid #2d405b; border-radius: 10px; background: #17273d; }
 .overtime-record label > span { display: none; }
@@ -480,6 +480,8 @@ body { background: var(--paper); color: #edf3fc; font-size: 16px; }
 .salary-breakdown > div:nth-child(6) strong, .salary-breakdown > div:nth-child(7) strong { color: #ffb0ac; }
 .salary-error { margin: 13px 0; }
 .salary-calculate-row { justify-content: flex-end; margin-bottom: 38px; }
+.salary-page #salary-month::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 1; cursor: pointer; }
+.salary-page .calendar-record .input { min-width: 0; width: 100%; }
 
 @media (max-width: 1200px) {
     .salary-work-grid { grid-template-columns: minmax(300px, .95fr) minmax(0, 1.3fr); }
@@ -757,7 +759,7 @@ body { font-size: 16px; }
 .calendar-list-group h3 { font-size: 15px; }
 .holiday-column .calendar-record { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 32px; }
 .overtime-column .overtime-head,
-.overtime-column .overtime-record { grid-template-columns: 1.15fr .76fr .76fr .9fr .8fr .75fr 30px; gap: 5px; }
+.overtime-column .overtime-record { grid-template-columns: 1.15fr .76fr .76fr .9fr .8fr 30px; gap: 5px; }
 .overtime-column .overtime-record { padding: 10px 7px; }
 .overtime-column .overtime-record .input { min-height: 39px; font-size: 13px; }
 .overtime-column .overtime-record output { font-size: 12px; }
@@ -828,7 +830,7 @@ body { font-size: 16px; }
     .salary-page .salary-intro > p { margin: 0; font-size: 13px; }
     .salary-page .attendance-tools {
         display: grid;
-        grid-template-columns: 190px minmax(0, 1fr) auto;
+        grid-template-columns: 190px minmax(0, 1fr);
         align-items: center;
         gap: 10px;
         margin: 0 0 4px;
@@ -836,7 +838,6 @@ body { font-size: 16px; }
     .salary-page .attendance-month .field-label { margin: 0 0 3px; font-size: 11px; }
     .salary-page .attendance-month .input { min-height: 32px; padding: 4px 7px; font-size: 13px; }
     .salary-page .attendance-tools > p:not(.salary-error) { margin: 0; font-size: 12px; }
-    .salary-page .salary-update-button { min-height: 36px; padding: 0 12px; font-size: 13px; white-space: nowrap; }
     .salary-page .salary-error { grid-column: 1 / -1; margin: 0; padding: 0; font-size: 12px; }
     .salary-page .salary-work-grid {
         min-height: 0;
@@ -912,8 +913,9 @@ body { font-size: 16px; }
     .salary-page .salary-ledger-row .input { min-height: 30px; padding: 4px 5px; font-size: 13px; }
     .salary-page .salary-ledger-output { grid-template-columns: minmax(0, 1fr) auto; }
     .salary-page .salary-ledger-output output { font-size: 11px; }
-    .salary-page .holiday-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto minmax(0, 1fr); }
+    .salary-page .holiday-column { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto minmax(0, 1fr); }
     .salary-page .holiday-column .panel-heading { grid-column: 1 / -1; }
+    .salary-page .holiday-column .calendar-list-group { grid-row: 2; }
     .salary-page .holiday-column .calendar-list-group {
         min-width: 0;
         min-height: 0;
@@ -928,7 +930,7 @@ body { font-size: 16px; }
     .salary-page .holiday-column .calendar-list-group + .calendar-list-group { margin: 0; padding: 0 0 0 8px; border-top: 0; border-left: 1px solid #30425b; }
     .salary-page .calendar-list-group h3 { margin: 0; font-size: 12px; }
     .salary-page .calendar-record {
-        grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) 25px;
+        grid-template-columns: minmax(0, 1fr) 25px;
         align-items: center;
         gap: 4px;
         padding: 4px;
@@ -940,7 +942,7 @@ body { font-size: 16px; }
     .salary-page .overtime-column { display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; }
     .salary-page .overtime-head,
     .salary-page .overtime-column .overtime-record {
-        grid-template-columns: minmax(90px, 1.1fr) repeat(3, minmax(48px, .7fr)) minmax(55px, .8fr) minmax(48px, .7fr) 25px;
+        grid-template-columns: minmax(90px, 1.1fr) repeat(2, minmax(48px, .7fr)) minmax(55px, .8fr) minmax(48px, .7fr) 25px;
         gap: 4px;
     }
     .salary-page .overtime-head { display: grid; padding: 0 3px 4px; font-size: 9px; }
@@ -1010,20 +1012,16 @@ body { font-size: 16px; }
         margin-bottom: 6px;
     }
     .salary-page .attendance-tools > p:not(.salary-error) { margin: 0; }
-    .salary-page .salary-update-button { justify-self: start; }
     .salary-page .salary-error { grid-column: 1 / -1; margin: 0; }
     .salary-page .overtime-head,
     .salary-page .overtime-column .overtime-record {
-        grid-template-columns: minmax(50px, 1.1fr) repeat(3, minmax(32px, .7fr)) minmax(40px, .8fr) minmax(32px, .7fr) 22px;
+        grid-template-columns: minmax(50px, 1.1fr) repeat(2, minmax(32px, .7fr)) minmax(40px, .8fr) minmax(32px, .7fr) 22px;
         gap: 3px;
     }
 }
 @media (min-width: 761px) and (max-width: 1100px) and (min-height: 600px) {
     .salary-page .salary-work-grid {
         grid-template-rows: minmax(0, .68fr) minmax(0, .53fr) minmax(0, .79fr);
-    }
-    .salary-page .attendance-tools {
-        grid-template-columns: minmax(150px, 190px) minmax(0, 1fr) auto;
     }
 }
 @media (min-width: 761px) and (max-width: 1100px) and (min-height: 600px) and (max-height: 700px) {
@@ -1049,7 +1047,6 @@ body { font-size: 16px; }
     .salary-page .attendance-month .field-label { margin-bottom: 2px; font-size: 10px; }
     .salary-page .attendance-month .input { min-height: 28px; padding: 3px 6px; font-size: 12px; }
     .salary-page .attendance-tools > p:not(.salary-error) { font-size: 10px; }
-    .salary-page .salary-update-button { min-height: 30px; padding: 0 8px; font-size: 11px; }
     .salary-page .attendance-grid { gap: 6px; }
     .salary-page .attendance-grid .field-label { margin-bottom: 2px; font-size: 10px; }
     .salary-page .attendance-grid .input,
@@ -1126,7 +1123,11 @@ body { font-size: 16px; }
     .salary-page .salary-work-grid { grid-template-rows: auto; }
     .salary-page .attendance-tools { grid-template-columns: minmax(0, 1fr); }
     .salary-page .attendance-tools > p:not(.salary-error) { margin: 0; }
-    .salary-page .salary-update-button { width: 100%; }
+    .salary-page .holiday-column { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .salary-page .holiday-column .panel-heading,
+    .salary-page .holiday-column .calendar-list-group { grid-column: 1; grid-row: auto; }
+    .salary-page .holiday-column .calendar-list-group { min-height: 130px; }
+    .salary-page .holiday-column .calendar-list-group + .calendar-list-group { padding: 12px 0 0; border-top: 1px solid #30425b; border-left: 0; }
 }
 
 .salary-page .salary-container,
@@ -1139,4 +1140,303 @@ body { font-size: 16px; }
 .salary-page .salary-total-panel .output-disclaimer {
     grid-column: 1 / -1;
     width: 100%;
+}
+
+.salary-page input[type="date"],
+.salary-page input[type="month"],
+.salary-page input[type="time"] {
+    color-scheme: dark;
+}
+
+.salary-page input[type="date"]::-webkit-calendar-picker-indicator,
+.salary-page input[type="month"]::-webkit-calendar-picker-indicator,
+.salary-page input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+    cursor: pointer;
+}
+
+@media (min-width: 1101px) {
+    .salary-page {
+        display: flex;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .salary-page main { height: auto; overflow: visible; }
+    .salary-page .salary-container { display: block; height: auto; padding: 14px 0 24px; }
+    .salary-page .attendance-column { margin: 0 0 16px; }
+    .salary-page .salary-work-grid {
+        display: grid;
+        grid-template-columns: minmax(390px, 1.4fr) minmax(350px, 1.1fr) minmax(240px, .7fr);
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "primary overtime calendar"
+            "result result result";
+        grid-auto-rows: auto;
+        align-items: stretch;
+        gap: 16px;
+        overflow: visible;
+    }
+    .salary-page .salary-layout-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-width: 0;
+        min-height: 0;
+    }
+    .salary-page .salary-layout-column > .salary-column { flex: 0 0 auto; }
+    .salary-page .salary-primary-column { grid-area: primary; }
+    .salary-page .salary-primary-column .attendance-column { margin: 0; }
+    .salary-page .salary-total-panel { grid-area: result; }
+    .salary-page .salary-overtime-stack {
+        grid-area: overtime;
+        align-self: stretch;
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        min-width: 0;
+        contain: size;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+    }
+    .salary-page .holiday-column {
+        grid-area: calendar;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-self: stretch;
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        min-width: 0;
+        contain: size;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+    }
+    .salary-page .salary-column,
+    .salary-page .salary-total-panel {
+        min-width: 0;
+        max-width: 100%;
+        margin: 0;
+        padding: 18px;
+        overflow: visible;
+        box-sizing: border-box;
+    }
+    .salary-page .holiday-column { overflow-y: auto; }
+    .salary-page .salary-column .panel-heading { margin: 0 0 14px; }
+    .salary-page .salary-column .panel-heading h2 { font-size: 18px; }
+    .salary-page .salary-column .panel-heading p { display: block; font-size: 12px; }
+    .salary-page .salary-ledger-column { display: block; }
+    .salary-page .salary-ledger {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 0;
+        border: 0;
+        background: transparent;
+        overflow: visible;
+    }
+    .salary-page .salary-ledger-group {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        min-width: 0;
+        padding: 10px;
+        border: 1px solid #2b3d56;
+        border-radius: 10px;
+        background: #101c2e;
+    }
+    .salary-page .salary-ledger-group h3 { margin: 0 0 2px; font-size: 13px; }
+    .salary-page .salary-ledger-row {
+        min-height: 46px;
+        grid-template-columns: minmax(0, 1fr) minmax(92px, .9fr);
+        gap: 6px;
+        padding: 6px 8px;
+        border-radius: 7px;
+    }
+    .salary-page .salary-ledger-row > label,
+    .salary-page .salary-ledger-row > span { font-size: 12px; }
+    .salary-page .salary-ledger-row > label span,
+    .salary-page .salary-ledger-row > span span { font-size: 10px; }
+    .salary-page .salary-ledger-row .input { min-height: 34px; font-size: 13px; }
+    .salary-page .salary-total-panel {
+        display: grid;
+        grid-template-columns: minmax(210px, .28fr) minmax(0, 1fr);
+        align-items: stretch;
+        gap: 18px;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding: 14px 18px;
+        overflow-wrap: anywhere;
+    }
+    .salary-page .salary-total-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 5px;
+        padding: 0 18px 0 0;
+        border: 0;
+        border-right: 1px solid #30425b;
+    }
+    .salary-page .salary-total-heading .eyebrow { margin: 0; font-size: 10px; }
+    .salary-page .salary-total-heading h2 { margin: 0; font-size: 18px; }
+    .salary-page .salary-total-heading output { margin-top: 5px; font-size: clamp(22px, 2vw, 30px); }
+    .salary-page .salary-total-details { min-width: 0; align-self: center; }
+    .salary-page .salary-total-description { margin: 0 0 8px; color: #b0bfd3; font-size: 11px; }
+    .salary-page .salary-breakdown { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 14px; padding-top: 0; }
+    .salary-page .salary-breakdown > div { gap: 2px; }
+    .salary-page .salary-breakdown span { font-size: 12px; }
+    .salary-page .salary-breakdown strong { font-size: 13px; }
+    .salary-page .salary-formula { margin-top: 8px; }
+    .salary-page .salary-formula summary { width: fit-content; color: #91bff0; font-size: 11px; cursor: pointer; }
+    .salary-page .salary-total-panel .salary-formula .output-disclaimer { margin: 6px 0 0; font-size: 10px; }
+    .salary-page .overtime-column,
+    .salary-page .leave-column { min-height: 0; }
+    .salary-page .overtime-list,
+    .salary-page .leave-list,
+    .salary-page .holiday-list,
+    .salary-page .makeup-list {
+        max-height: none;
+        overflow: visible;
+        align-content: start;
+    }
+    .salary-page .overtime-head,
+    .salary-page .overtime-column .overtime-record {
+        min-width: 0;
+        grid-template-columns: minmax(0, 1.1fr) repeat(2, minmax(0, .7fr)) minmax(0, .8fr) minmax(0, .7fr) 24px;
+        gap: 3px;
+    }
+    .salary-page .overtime-head { display: grid; font-size: 9px; }
+    .salary-page .overtime-column .overtime-record { padding: 6px 4px; }
+    .salary-page .overtime-column .overtime-record .input { width: 100%; min-width: 0; min-height: 32px; padding: 3px 1px; font-size: 10px; }
+    .salary-page .overtime-column .overtime-record output { font-size: 10px; }
+    .salary-page .holiday-column .calendar-list-group {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 auto;
+        gap: 8px;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+    }
+    .salary-page .holiday-column .calendar-list-group + .calendar-list-group {
+        margin: 0;
+        padding: 14px 0 0;
+        border-top: 1px solid #30425b;
+        border-left: 0;
+    }
+    .salary-page .holiday-column .calendar-list-group h3 { margin: 0; font-size: 13px; }
+    .salary-page .calendar-record { grid-template-columns: minmax(0, 1fr) 28px; gap: 5px; padding: 5px; }
+    .salary-page .calendar-record .input { min-height: 34px; font-size: 12px; }
+    .salary-page .add-record-button { min-height: 36px; margin-top: 0; font-size: 12px; }
+    .salary-page .site-footer { display: block; }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+    .salary-page {
+        display: flex;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    .salary-page main { height: auto; overflow: visible; }
+    .salary-page .salary-container { display: block; height: auto; padding: 14px 0 24px; }
+    .salary-page .attendance-column { margin-bottom: 14px; }
+    .salary-page .salary-work-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: none;
+        gap: 14px;
+        overflow: visible;
+    }
+    .salary-page .salary-work-grid > .salary-layout-column,
+    .salary-page .salary-work-grid > .salary-column { grid-area: auto; }
+    .salary-page .salary-layout-column { max-height: none; overflow: visible; }
+    .salary-page .salary-total-panel { margin: 0; }
+    .salary-page .holiday-column { max-height: none; }
+    .salary-page .salary-overtime-stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+
+@media (max-width: 760px) {
+    .salary-page {
+        display: flex;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    .salary-page main { height: auto; overflow: visible; }
+    .salary-page .salary-container { display: block; height: auto; padding: 12px 0 20px; }
+    .salary-page .attendance-column { margin-bottom: 12px; }
+    .salary-page .salary-work-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: none;
+        gap: 12px;
+        overflow: visible;
+    }
+    .salary-page .salary-work-grid > .salary-layout-column,
+    .salary-page .salary-work-grid > .salary-column { grid-area: auto; }
+    .salary-page .salary-layout-column { max-height: none; overflow: visible; }
+    .salary-page .salary-overtime-stack { display: flex; }
+    .salary-page .holiday-column { max-height: none; }
+    .salary-page .salary-total-panel { margin: 0; }
+    .salary-page .salary-total-panel { grid-template-columns: minmax(175px, .35fr) minmax(0, 1fr); gap: 14px; }
+    .salary-page .salary-breakdown { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
+}
+
+@media (max-width: 760px) {
+    .salary-page .salary-total-panel { display: block; padding: 14px; }
+    .salary-page .salary-total-heading {
+        align-items: flex-start;
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid #30425b;
+    }
+    .salary-page .salary-total-heading output { margin-top: 2px; }
+    .salary-page .salary-total-details { padding-top: 10px; }
+    .salary-page .salary-total-description { font-size: 12px; }
+    .salary-page .salary-breakdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .salary-page .overtime-head { display: none; }
+    .salary-page .overtime-column .overtime-record {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+    }
+    .salary-page .overtime-column .overtime-record .ot-date-field { grid-column: 1 / -1; }
+    .salary-page .overtime-column .overtime-record label > span { display: block; margin-bottom: 4px; font-size: 11px; }
+    .salary-page .overtime-column .overtime-record .input { min-height: 36px; padding: 5px; font-size: 12px; }
+    .salary-page .overtime-column .overtime-record output {
+        min-height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+        background: #20334d;
+        font-size: 11px;
+    }
+    .salary-page .overtime-column .overtime-record .remove-record { justify-self: end; }
+}
+
+.salary-page input[type="date"],
+.salary-page input[type="month"],
+.salary-page input[type="time"] {
+    color: #edf3fc;
+    color-scheme: dark;
+    background-color: #0e1a2b;
+}
+
+.salary-page input#salary-month::-webkit-calendar-picker-indicator,
+.salary-page input[type="date"]::-webkit-calendar-picker-indicator,
+.salary-page input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(1);
+    opacity: 1;
 }

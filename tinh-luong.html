@@ -29,6 +29,7 @@
             </section>
 
             <div class="salary-work-grid">
+                <div class="salary-layout-column salary-primary-column">
                 <section class="panel salary-column attendance-column">
                     <div class="panel-heading">
                         <div><h2>Chấm công</h2><p>Ngày công trong tháng</p></div>
@@ -39,14 +40,13 @@
                             <label class="field-label" for="salary-month">Tháng tính lương</label>
                             <input class="input" id="salary-month" type="month">
                         </div>
-                        <p>Công làm việc = công thực tế + OT quy đổi.</p>
-                        <button class="button-primary salary-update-button" id="calculate-salary" type="button">Cập nhật bảng lương <span class="button-arrow" aria-hidden="true">→</span></button>
+                        <p>Công làm việc = công thực tế + OT quy đổi; kết quả tự cập nhật.</p>
                         <p class="form-error salary-error" id="salary-error" role="alert"></p>
                     </div>
                     <div class="attendance-grid">
                         <div class="form-field">
                             <label class="field-label" for="standard-days">Ngày công chuẩn</label>
-                            <input class="input" id="standard-days" type="number" min="0.01" max="31" step="0.01" inputmode="decimal">
+                            <input class="input" id="standard-days" type="number" min="0" max="31" step="0.01" inputmode="decimal" readonly>
                         </div>
                         <div class="form-field">
                             <span class="field-label">Ngày công làm việc</span>
@@ -55,15 +55,14 @@
                         </div>
                         <div class="form-field">
                             <label class="field-label" for="meal-days">Công ăn trưa</label>
-                            <input class="input" id="meal-days" type="number" min="0" max="31" step="0.01" inputmode="decimal">
+                            <input class="input" id="meal-days" type="number" min="0" max="31" step="0.01" inputmode="decimal" readonly>
                         </div>
                         <div class="form-field">
                             <label class="field-label" for="actual-days">Công thực tế</label>
-                            <input class="input" id="actual-days" type="number" min="0" max="31" step="0.01" inputmode="decimal">
+                            <input class="input" id="actual-days" type="number" min="0" max="31" step="0.01" inputmode="decimal" readonly>
                         </div>
                     </div>
                 </section>
-
                 <section class="panel salary-column salary-main-column salary-ledger-column">
                     <div class="panel-heading">
                         <div><h2>Lương, phụ cấp &amp; khấu trừ</h2><p>Các khoản cố định theo tháng hoặc theo ngày công.</p></div>
@@ -74,23 +73,23 @@
                             <h3>Thu nhập</h3>
                             <div class="salary-ledger-row">
                                 <label for="base-salary">Mức lương (LCB)</label>
-                                <div class="money-input"><input class="input" id="base-salary" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="base-salary" type="text" inputmode="numeric" value="0"><span>đ</span></div>
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="hqcv">Phụ cấp HQCV</label>
-                                <div class="money-input"><input class="input" id="hqcv" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="hqcv" type="text" inputmode="numeric" value="5.500.000" readonly><span>đ</span></div>
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="relocation">Trợ cấp chuyển vùng</label>
-                                <div class="money-input"><input class="input" id="relocation" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="relocation" type="text" inputmode="numeric" value="1.000.000"><span>đ</span></div>
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="hazard-rate">Trợ cấp độc hại <span>(đ/ngày)</span></label>
-                                <div class="money-input"><input class="input" id="hazard-rate" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="hazard-rate" type="text" inputmode="numeric" value="13.000"><span>đ</span></div>
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="meal-rate">Trợ cấp ăn ca <span>(đ/ngày)</span></label>
-                                <div class="money-input"><input class="input" id="meal-rate" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="meal-rate" type="text" inputmode="numeric" value="50.000"><span>đ</span></div>
                             </div>
                         </div>
                         <div class="salary-ledger-group">
@@ -109,71 +108,89 @@
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="phone-fee">Phí điện thoại</label>
-                                <div class="money-input"><input class="input" id="phone-fee" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="phone-fee" type="text" inputmode="numeric" value="0"><span>đ</span></div>
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="donation">Ủng hộ</label>
-                                <div class="money-input"><input class="input" id="donation" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="donation" type="text" inputmode="numeric" value="0"><span>đ</span></div>
                             </div>
                             <div class="salary-ledger-row">
                                 <label for="tax-refund">Hoàn thuế</label>
-                                <div class="money-input"><input class="input" id="tax-refund" type="number" min="0" step="1000" inputmode="decimal"><span>đ</span></div>
+                                <div class="money-input"><input class="input money-amount" id="tax-refund" type="text" inputmode="numeric" value="0"><span>đ</span></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section class="panel salary-column holiday-column">
-                        <div class="panel-heading">
-                            <div><h2>Ngày nghỉ &amp; làm bù</h2><p>Ngày nghỉ/lễ và lịch làm bù.</p></div>
-                            <span class="section-index">03</span>
-                        </div>
-                        <div class="calendar-list-group">
-                            <h3>Ngày nghỉ, lễ</h3>
-                            <div class="record-list holiday-list" id="holiday-list"></div>
-                            <button class="button-secondary add-record-button" id="add-holiday" type="button"><span aria-hidden="true">＋</span> Thêm ngày nghỉ/lễ</button>
-                        </div>
-                        <div class="calendar-list-group">
-                            <h3>Ngày làm bù</h3>
-                            <div class="record-list makeup-list" id="makeup-list"></div>
-                            <button class="button-secondary add-record-button" id="add-makeup" type="button"><span aria-hidden="true">＋</span> Thêm ngày làm bù</button>
-                        </div>
-                    </section>
+                </div>
 
-                    <section class="panel salary-column overtime-column">
-                        <div class="panel-heading">
-                            <div><h2>Ngày làm thêm</h2><p>OT = giờ làm − nghỉ ăn; quy đổi hệ số 1,5.</p></div>
-                            <span class="section-index">04</span>
+                <div class="salary-layout-column salary-overtime-stack">
+                <section class="panel salary-column overtime-column">
+                    <div class="panel-heading">
+                        <div><h2>Ngày làm thêm</h2><p>OT ngày thường 150%, cuối tuần 200%; quy đổi theo 8 giờ/công.</p></div>
+                        <span class="section-index">04</span>
+                    </div>
+                    <div class="overtime-head" aria-hidden="true">
+                        <span>Ngày OT</span><span>Vào</span><span>Ra</span><span>Giờ OT</span><span>Hệ số</span><span></span>
+                    </div>
+                    <div class="record-list overtime-list" id="overtime-list"></div>
+                    <button class="button-secondary add-record-button" id="add-overtime" type="button"><span aria-hidden="true">＋</span> Thêm ngày làm thêm</button>
+                    <div class="overtime-total">
+                        <span>Tổng giờ OT<strong id="overtime-hours-total">—</strong></span>
+                        <span>OT quy đổi<strong id="overtime-equivalent-total">—</strong></span>
+                    </div>
+                </section>
+
+                <section class="panel salary-column leave-column">
+                    <div class="panel-heading">
+                        <div><h2>Ngày nghỉ phép</h2><p>Ngày nghỉ phép sẽ trừ vào công thực tế.</p></div>
+                    </div>
+                    <div class="record-list leave-list" id="leave-list"></div>
+                    <button class="button-secondary add-record-button" id="add-leave" type="button"><span aria-hidden="true">＋</span> Thêm ngày nghỉ phép</button>
+                </section>
+                </div>
+
+                <section class="panel salary-column holiday-column">
+                    <div class="panel-heading">
+                        <div><h2>Ngày nghỉ lễ &amp; làm bù</h2><p>Ngày lễ tự động theo năm, có thể chỉnh sửa.</p></div>
+                    </div>
+                    <div class="calendar-list-group">
+                        <h3>Ngày nghỉ lễ</h3>
+                        <div class="record-list holiday-list" id="holiday-list"></div>
+                        <button class="button-secondary add-record-button" id="add-holiday" type="button"><span aria-hidden="true">＋</span> Thêm ngày lễ</button>
+                    </div>
+                    <div class="calendar-list-group">
+                        <h3>Ngày làm bù</h3>
+                        <div class="record-list makeup-list" id="makeup-list"></div>
+                        <button class="button-secondary add-record-button" id="add-makeup" type="button"><span aria-hidden="true">＋</span> Thêm ngày làm bù</button>
+                    </div>
+                </section>
+
+                <section class="panel salary-total-panel" aria-live="polite">
+                    <div class="salary-total-heading">
+                        <p class="eyebrow">Kết quả ước tính</p>
+                        <h2>Thực nhận dự kiến</h2>
+                        <output id="salary-total">—</output>
+                    </div>
+                    <div class="salary-total-details">
+                        <p class="salary-total-description">Đã cộng phụ cấp và hoàn thuế, sau khi trừ bảo hiểm, điện thoại và ủng hộ.</p>
+                        <div class="salary-breakdown">
+                            <div><span>Lương LCB theo công làm việc</span><strong id="salary-earned">—</strong></div>
+                            <div><span>Phụ cấp HQCV</span><strong id="salary-hqcv">—</strong></div>
+                            <div><span>Trợ cấp chuyển vùng</span><strong id="salary-relocation">—</strong></div>
+                            <div><span>Trợ cấp độc hại</span><strong id="salary-hazard">—</strong></div>
+                            <div><span>Trợ cấp ăn ca</span><strong id="salary-meal">—</strong></div>
+                            <div><span>Tổng bảo hiểm &amp; đoàn phí</span><strong id="salary-deductions">—</strong></div>
+                            <div><span>Phí điện thoại &amp; ủng hộ</span><strong id="salary-other-deductions">—</strong></div>
+                            <div><span>Hoàn thuế</span><strong id="salary-refund">—</strong></div>
                         </div>
-                        <div class="overtime-head" aria-hidden="true">
-                            <span>Ngày OT</span><span>Vào</span><span>Ra</span><span>Nghỉ</span><span>Giờ OT</span><span>Hệ số</span><span></span>
-                        </div>
-                        <div class="record-list overtime-list" id="overtime-list"></div>
-                        <button class="button-secondary add-record-button" id="add-overtime" type="button"><span aria-hidden="true">＋</span> Thêm ngày làm thêm</button>
-                        <div class="overtime-total">
-                            <span>Tổng giờ OT<strong id="overtime-hours-total">—</strong></span>
-                            <span>OT quy đổi<strong id="overtime-equivalent-total">—</strong></span>
-                        </div>
+                        <details class="salary-formula">
+                            <summary>Cách tính lương</summary>
+                            <p class="output-disclaimer">Công chuẩn = ngày thường trong tháng + 0,5 công mỗi thứ Bảy − ngày nghỉ lễ; công thực tế = công chuẩn − ngày nghỉ phép + ngày làm bù. OT quy đổi = giờ OT × 150% (thứ Hai–thứ Sáu) hoặc 200% (thứ Bảy, Chủ Nhật) ÷ 8 giờ. Lương theo công = (LCB + trợ cấp chuyển vùng) ÷ công chuẩn × (công thực tế + OT quy đổi); HQCV theo tháng trong quý. Trợ cấp độc hại tính theo công thực tế, ăn ca theo công chuẩn. Các khoản bảo hiểm và đoàn phí tính trên LCB tháng.</p>
+                        </details>
+                    </div>
                 </section>
             </div>
-
-            <section class="panel salary-total-panel" aria-live="polite">
-                <div class="salary-total-heading">
-                    <div><p class="eyebrow">Kết quả ước tính</p><h2>Thực nhận dự kiến</h2><p>Đã cộng phụ cấp/hoàn thuế và trừ bảo hiểm, phí điện thoại, ủng hộ.</p></div>
-                    <output id="salary-total">—</output>
-                </div>
-                <div class="salary-breakdown">
-                    <div><span>Lương LCB theo công làm việc</span><strong id="salary-earned">—</strong></div>
-                    <div><span>Phụ cấp HQCV</span><strong id="salary-hqcv">—</strong></div>
-                    <div><span>Trợ cấp chuyển vùng</span><strong id="salary-relocation">—</strong></div>
-                    <div><span>Trợ cấp độc hại</span><strong id="salary-hazard">—</strong></div>
-                    <div><span>Trợ cấp ăn ca</span><strong id="salary-meal">—</strong></div>
-                    <div><span>Tổng bảo hiểm &amp; đoàn phí</span><strong id="salary-deductions">—</strong></div>
-                    <div><span>Phí điện thoại &amp; ủng hộ</span><strong id="salary-other-deductions">—</strong></div>
-                    <div><span>Hoàn thuế</span><strong id="salary-refund">—</strong></div>
-                </div>
-                <p class="output-disclaimer">Cách tính: OT quy đổi = (giờ ra − giờ vào − nghỉ ăn trưa) × 1,5 ÷ 6; LCB × (công thực tế + OT quy đổi) ÷ ngày công chuẩn. Trợ cấp độc hại tính theo công thực tế, ăn ca theo công ăn trưa. BHXH+BHYT, BHTN và đoàn phí tính trên LCB tháng. Kết quả chưa bao gồm các khoản thuế/bảo hiểm khác không nêu ở đây.</p>
-            </section>
         </div>
     </main>
     <footer class="site-footer tool-page-footer">
